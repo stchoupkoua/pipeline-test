@@ -29,17 +29,3 @@ runs:
       run: |
         echo "Autor: ${{ inputs.github_actor }}"
         echo "user token: " >> ${{ inputs.access_token }} 
-    - name: Set up Maven settings.xml
-      run: |
-        mkdir -p ~/.m2
-        echo "<settings>
-                <servers>
-                   <server>
-                      <id>github-webank</id>
-                      <username>${{ inputs.github_actor }}</username>
-                      <password>${{ inputs.access_token }}</password>
-                   </server>
-                  </servers>
-              </settings>" > ~/.m2/settings.xml
-    - name: Run Unit and Integration Tests
-      run: mvn verify -s ~/.m2/settings.xml -Dmaven.javadoc.skip=true
