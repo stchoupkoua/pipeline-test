@@ -20,6 +20,8 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
+    - name: Checkout Repository
+      uses: actions/checkout@v4
     - name: Use reusable Setup Steps
       id: setup-steps
       uses: ./.github/reusable-steps # To use this syntax we must have the repository checkout
