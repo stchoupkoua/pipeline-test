@@ -3,16 +3,15 @@ description: Demonstrate how to use reusable steps in a workflow
 
 inputs:
   github_actor:
-    description: 'Input to the reusable workflow'
+    description: 'Name of the author'
     required: true
   access_token:
+    description: 'Token of the repository'
     required: true
 
 runs:
   using: 'composite'
   steps:
-    - name: Checkout Repository
-      uses: actions/checkout@v4
     - name: Set up JDK 17
       uses: actions/setup-java@v4
       with:
@@ -25,14 +24,14 @@ runs:
         key: ${{ runner.os }}-m2-${{ hashFiles('**/pom.xml') }}
         restore-keys: ${{ runner.os }}-m2
     - name: Set up Maven settings.xml
-        run: |
-          mkdir -p ~/.m2
-          echo "<settings>
-                  <servers>
-                    <server>
-                      <id>github-webank</id>
-                      <username>${{ inputs.github_actor }}</username>
-                      <password>${{ inputs.access_token }}</password>
-                    </server>
-                  </servers>
-                </settings>" > ~/.m2/settings.xml
+      run: |
+        mkdir -p ~/.m2
+        echo "<settings>
+                <servers>
+                  <server>
+                    <id>github-webank</id>
+                    <username>${{ inputs.github_actor }}</username>
+                    <password>${{ inputs.access_token }}</password>
+                  </server>
+                </servers>
+              </settings>" > ~/.m2/settings.xml
