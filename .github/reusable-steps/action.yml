@@ -28,6 +28,3 @@ runs:
       run: |
         echo "Autor: ${{ inputs.github_actor }}"
         echo "user token: ${{ inputs.access_token }}"
-    - name: Set up Maven settings.xml
-      run: |
-        mkdir -p ~/.m2
