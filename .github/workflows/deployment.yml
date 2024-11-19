@@ -22,6 +22,6 @@ jobs:
     steps:
     - name: Use reusable Setup Steps
       id: setup-steps
-      uses: ./.github/reusable-steps/reusable-setup-steps.yml # To use this syntax we must have the repository checkout
+      uses: ./.github/reusable-steps # To use this syntax we must have the repository checkout
     - name: Build with Maven
       run: mvn clean install --file pom.xml -DskipTests
