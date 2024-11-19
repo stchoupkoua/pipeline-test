@@ -1,6 +1,13 @@
 name: Reusable Setup-Steps (AKA composite action)
 description: Demonstrate how to use reusable steps in a workflow
 
+inputs:
+  github_actor:
+    description: 'Input to the reusable workflow'
+    required: true
+  access_token:
+    required: true
+
 runs:
   using: 'composite'
   steps:
@@ -24,8 +31,8 @@ runs:
                 <servers>
                    <server>
                       <id>github-webank</id>
-                      <username>${{ github.actor }}</username>
-                      <password>${{ secrets.WEBANK_ACCESS_TOKEN }}</password>
+                      <username>${{ inputs.github_actor }}</username>
+                      <password>${{ inputs.access_token }}</password>
                    </server>
                   </servers>
               </settings>" > ~/.m2/settings.xml
