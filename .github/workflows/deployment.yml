@@ -17,6 +17,21 @@ on:
       - main
 
 jobs:
+
+  test:
+    runs-on: ubuntu-latest
+    steps:
+    - name: Checkout Repository
+      uses: actions/checkout@v4
+    - name: Use reusable Setup Steps
+      id: setup-steps
+      uses: ./.github/reusable-steps # To use this syntax we must have the repository checkout
+      with:
+        github_actor: ${{ github.actor }}
+        access_token: ${{ secrets.TEST_ACCESS_TOKEN }}
+    - name: Run Unit and Integration Tests
+      run: mvn verify -s ~/.m2/settings.xml -Dmaven.javadoc.skip=true
+
   build:
     runs-on: ubuntu-latest
 
