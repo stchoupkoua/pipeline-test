@@ -28,6 +28,6 @@ jobs:
       uses: ./.github/reusable-steps # To use this syntax we must have the repository checkout
       with:
         github_actor: ${{ github.actor }}
-        access_token: ${{ secrets.WEBANK_ACCESS_TOKEN }}
+        access_token: ${{ secrets.TEST_ACCESS_TOKEN }}
     - name: Build with Maven
       run: mvn clean install --file pom.xml -DskipTests
