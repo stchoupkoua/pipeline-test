@@ -1,4 +1,4 @@
-name: Reusable Setup-Steps
+name: Reusable Setup-Steps (AKA composite action)
 description: Demonstrate how to use reusable steps in a workflow
 
 runs:
