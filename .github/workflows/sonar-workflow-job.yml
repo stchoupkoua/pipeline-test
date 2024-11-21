@@ -1,0 +1,19 @@
+name: Sonar Workflow Job
+
+on:
+  workflow_call:
+
+jobs:
+
+  sonar:
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@v4
+    - name: Use reusable Setup Steps
+      id: setup-steps
+      uses: ./.github/reusable-steps # To use this syntax we must have the repository checkout
+      with:
+        github_actor: ${{ github.actor }}
+        access_token: ${{ secrets.TEST_ACCESS_TOKEN }}
+    - name: Build with Maven
+      run: mvn sonar:sonar --file pom.xml -DskipTests
