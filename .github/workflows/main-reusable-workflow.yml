@@ -12,11 +12,15 @@ on:
       - main
 
 jobs:
-  job-1:
+  test:
     uses: ./.github/workflows/test-workflow-job.yml
     with: 
       filename: ./target/surefire-reports
 
-  job-2:
-    needs: job-1
+  package:
+    needs: test
     uses: ./.github/workflows/build-workflow-job.yml
+
+  quality-gate:
+    needs: package
+    uses: ./.github/workflows/sonar-workflow-job.yml
