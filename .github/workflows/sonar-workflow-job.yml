@@ -16,4 +16,4 @@ jobs:
         github_actor: ${{ github.actor }}
         access_token: ${{ secrets.TEST_ACCESS_TOKEN }}
     - name: Build with Maven
-      run: mvn sonar:sonar --file pom.xml -DskipTests
+      run: mvn verify sonar:sonar -P sonarqube -Dsonar.token=${{ secrets.SONARCLOUD_TOKEN }} -Dsonar.projectKey=pipeline-demo
