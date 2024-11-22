@@ -11,7 +11,7 @@ This action runs setup for SDK and maven setting.
 
 ```yml
       - name: Set up JDK 17 and Maven
-        uses: ./github/reusable-steps
+        uses: ./.github/reusable-steps
         with:
           github_actor: ${{ github.actor }}
           access_token: ${{ secrets.TEST_ACCESS_TOKEN }}
