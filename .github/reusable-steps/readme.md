@@ -13,8 +13,8 @@ This action runs setup for SDK and maven setting.
       - name: Set up JDK 17 and Maven
         uses: ./github/reusable-steps
         with:
-          github_actor: ${{ inputs.github_actor }}
-          access_token: ${{ inputs.access_token }}
+          github_actor: ${{ github.actor }}
+          access_token: ${{ secrets.TEST_ACCESS_TOKEN }}
 ```
 
 ## Support
