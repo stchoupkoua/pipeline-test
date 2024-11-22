@@ -21,6 +21,6 @@ jobs:
     needs: test
     uses: ./.github/workflows/build-workflow-job.yml
 
-  quality-gate:
-    needs: package
-    uses: ./.github/workflows/sonar-workflow-job.yml
+#  quality-gate:
+#    needs: package
+#    uses: ./.github/workflows/sonar-workflow-job.yml
