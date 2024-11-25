@@ -12,7 +12,7 @@ jobs:
       uses: actions/checkout@v4
     - name: Use reusable Setup Steps
       id: setup-steps
-      uses: ./.github/reusable-steps # To use this syntax we must have the repository checkout
+      uses: stchoupkoua/reusable-actions/setup-java-maven@main # To use this syntax we must have the repository checkout
       with:
         github_actor: ${{ github.actor }}
         access_token: ${{ secrets.TEST_ACCESS_TOKEN }}
